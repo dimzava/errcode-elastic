@@ -1,0 +1,29 @@
+buildscript {
+    repositories {
+        maven { url "http://oss.jfrog.org/artifactory/repo" }
+        jcenter()
+    }
+    dependencies {
+        classpath 'io.ratpack:ratpack-gradle:0.9.16'
+    }
+}
+
+apply plugin: "io.ratpack.ratpack-groovy"
+apply plugin: "idea"
+apply plugin: "eclipse"
+
+repositories {
+    jcenter()
+    maven { url "https://oss.jfrog.org/repo" }
+    maven { url "https://nexus.codehaus.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+    springloaded "org.springframework:springloaded:1.2.3.RELEASE"
+
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.2'
+
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4", {
+        exclude module: "groovy-all"
+    }
+}
